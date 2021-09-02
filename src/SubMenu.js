@@ -156,7 +156,7 @@ export default class SubMenu extends AbstractMenu {
         e.preventDefault();
         this.hideSubMenu(e);
     }
-    
+
     hideSubMenu = (e) => {
         // avoid closing submenus of a different menu tree
         if (e.detail && e.detail.id && this.menu && e.detail.id !== this.menu.id) {
