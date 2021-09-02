@@ -17,6 +17,7 @@ export default class ContextMenuTrigger extends Component {
         posX: PropTypes.number,
         posY: PropTypes.number,
         renderTag: PropTypes.elementType,
+        // 0 is left click, 2 is right click
         mouseButton: PropTypes.number,
         disableIfShiftIsPressed: PropTypes.bool
     };
@@ -29,7 +30,7 @@ export default class ContextMenuTrigger extends Component {
         renderTag: 'div',
         posX: 0,
         posY: 0,
-        mouseButton: 2, // 0 is left click, 2 is right click
+        mouseButton: null,
         disableIfShiftIsPressed: false
     };
 
@@ -89,14 +90,16 @@ export default class ContextMenuTrigger extends Component {
     }
 
     handleContextMenu = (event) => {
-        if (event.button === this.props.mouseButton) {
+        const { mouseButton } = this.props;
+        if (mouseButton === null || event.button === mouseButton) {
             this.handleContextClick(event);
         }
         callIfExists(this.props.attributes.onContextMenu, event);
     }
 
     handleMouseClick = (event) => {
-        if (event.button === this.props.mouseButton) {
+        const { mouseButton } = this.props;
+        if (mouseButton === null || event.button === mouseButton) {
             this.handleContextClick(event);
         }
         callIfExists(this.props.attributes.onClick, event);
