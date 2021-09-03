@@ -33,19 +33,19 @@ Pull requests need only the 👍 of admin or two or more collaborators to be mer
 You can run lint + tests  via:
 
 ```
-npm test
+yarn test
 ```
 
 If you just want to run lint:
 
 ```
-npm run lint
+yarn lint
 ```
 
 If you just want to run all tests:
 
 ```
-npm run test:only
+yarn test:only
 ```
 
 ##### Development
@@ -53,7 +53,7 @@ npm run test:only
 You can start webpack & dev server that watches for changes and build the examples via:
 
 ```
-npm start
+yarn start
 ```
 
 
