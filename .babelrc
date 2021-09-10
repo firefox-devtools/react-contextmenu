@@ -12,7 +12,7 @@
                     "@babel/preset-env",
                     {
                         "modules": false,
-                        "targets": "defaults",
+                        "targets": "defaults and not IE 11",
                     }
                 ]
             ],
