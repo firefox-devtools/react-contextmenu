@@ -31,18 +31,16 @@ const config = {
                 use: [{
                     loader: 'babel-loader',
                     options: {
-                         presets: [
-                            'react',
-                            ['env', {
+                        assumptions: {
+                            setPublicClassFields: true
+                        },
+                        presets: [
+                            '@babel/preset-react',
+                            ['@babel/preset-env', {
                                 modules: false,
-                                targets: {
-                                    browsers: 'IE >= 11, Edge >= 12, FireFox >= 38, Chrome >= 47, Opera >= 34, Safari >= 8'
-                                }
+                                targets: "defaults",
                             }]
                         ],
-                        plugins: [
-                            'transform-class-properties'
-                        ]
                     }
                 }],
                 include: [

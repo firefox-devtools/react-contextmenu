@@ -15,15 +15,16 @@ module.exports = {
                 test: /\.js$/,
                 loader: "babel-loader",
                 options: {
+                    assumptions: {
+                        setPublicClassFields: true
+                    },
                     presets: [
-                        'react',
-                        ['es2015', {
-                            modules: false
+                        '@babel/preset-react',
+                        ['@babel/preset-env', {
+                            modules: false,
+                            targets: "defaults",
                         }]
                     ],
-                    plugins: [
-                        'transform-class-properties'
-                    ]
                 },
                 include: [
                     path.resolve(__dirname, './src')
