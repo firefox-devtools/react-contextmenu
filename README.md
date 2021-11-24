@@ -38,11 +38,11 @@ yarn add react-contextmenu
 ```
 
 ## Browser Support
-- IE 11 and Edge >= 12
-- FireFox >= 38
-- Chrome >= 47
-- Opera >= 34
-- Safari >= 8
+- Edge >= 94
+- FireFox >= 91 and 78
+- Chrome >= 92
+- Opera >= 79
+- Safari >= 13.1
 
 ## Usage
 
