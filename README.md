@@ -1,16 +1,13 @@
-# Project is no longer maintained
-
-[![NPM version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Dependency Status][deps-image]][deps-url]
-[![Dev Dependency Status][dev-deps-image]][dev-deps-url]
-[![Code Climate][climate-image]][climate-url]
-
-[![NPM](https://nodei.co/npm/react-contextmenu.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/react-contextmenu/)
-
 # React Contextmenu
 
 ContextMenu in React with accessibility support. Live Examples can be found [here](//vkbansal.github.io/react-contextmenu/)
+
+This is a fork from [the original project](https://github.com/vkbansal/react-contextmenu) for use with the [firefox profiler](https://github.com/firefox-devtools/profiler/). We
+don't intend to add new features but will fix issues with the existing code, and
+sometimes change it for our usage. We hope it can be useful for more projects.
+
+Thanks [Vivek Kumar Bansal](https://github.com/vkbansal) for all the good work
+put in this project.
 
 ## Table of contents
 
@@ -28,13 +25,13 @@ ContextMenu in React with accessibility support. Live Examples can be found [her
 Using npm
 
 ```
-npm install --save react-contextmenu
+npm install --save @firefox-devtools/react-contextmenu
 ```
 
 Using yarn
 
 ```
-yarn add react-contextmenu
+yarn add @firefox-devtools/react-contextmenu
 ```
 
 ## Browser Support
@@ -51,7 +48,7 @@ Simple example
 ```jsx
 import React from "react";
 import ReactDOM from "react-dom";
-import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
+import { ContextMenu, MenuItem, ContextMenuTrigger } from "@firefox-devtools/react-contextmenu";
 
 function handleClick(e, data) {
   console.log(data.foo);
@@ -104,27 +101,13 @@ see [usage docs](./docs/usage.md) / [examples](./examples) for more details.
 
 ## Contributors
 
-[All Contributors](https://github.com/vkbansal/react-contextmenu/graphs/contributors)
+[All Contributors](https://github.com/firefox-devtools/react-contextmenu/graphs/contributors)
 
 ## Changelog
 
-For Changelog, see [releases](https://github.com/vkbansal/react-contextmenu/releases)
+For Changelog, see [releases](https://github.com/firefox-devtools/react-contextmenu/releases)
+For the changelog from before the fork, see [releases](https://github.com/vkbansal/react-contextmenu/releases)
 
 ## License
 
 [MIT](./LICENSE.md). Copyright(c) [Vivek Kumar Bansal](http://vkbansal.me/)
-
-[npm-url]: https://npmjs.org/package/react-contextmenu
-[npm-image]: http://img.shields.io/npm/v/react-contextmenu.svg?style=flat-square
-
-[travis-url]: https://travis-ci.org/vkbansal/react-contextmenu
-[travis-image]: http://img.shields.io/travis/vkbansal/react-contextmenu/master.svg?style=flat-square
-
-[deps-url]: https://david-dm.org/vkbansal/react-contextmenu
-[deps-image]: https://img.shields.io/david/vkbansal/react-contextmenu.svg?style=flat-square
-
-[dev-deps-url]: https://david-dm.org/vkbansal/react-contextmenu
-[dev-deps-image]: https://img.shields.io/david/dev/vkbansal/react-contextmenu.svg?style=flat-square
-
-[climate-url]: https://codeclimate.com/github/vkbansal/react-contextmenu
-[climate-image]: http://img.shields.io/codeclimate/github/vkbansal/react-contextmenu.svg?style=flat-square
