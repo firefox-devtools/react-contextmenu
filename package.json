@@ -46,7 +46,7 @@
   },
   "homepage": "https://github.com/vkbansal/react-contextmenu",
   "dependencies": {
-    "classnames": "^2.2.5",
+    "classnames": "^2.3.1",
     "object-assign": "^4.1.0"
   },
   "peerDependencies": {
