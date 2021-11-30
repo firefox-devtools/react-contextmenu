@@ -1,4 +1,4 @@
-declare module "react-contextmenu" {
+declare module "@firefox-devtools/react-contextmenu" {
     import * as React from "react";
 
     export interface ContextMenuProps {
@@ -66,7 +66,7 @@ declare module "react-contextmenu" {
     export function hideMenu(opts?: any, target?: HTMLElement): void;
 }
 
-declare module "react-contextmenu/modules/actions" {
+declare module "@firefox-devtools/react-contextmenu/modules/actions" {
     export function showMenu(opts?: any, target?: HTMLElement): void;
     export function hideMenu(opts?: any, target?: HTMLElement): void;
 }
