@@ -39,6 +39,7 @@ Contextmenu Trigger Component
 | holdToDisplay           | Number                  |           | `1000`  | This is applicable only for touch screens. The time (in ms) for which, user has to hold down his/her finger before the menu is shown.  **Note:** To disable the long press trigger on left-click just set a negative holdToDisplay value such as `-1` |
 | renderTag               | String or React Element |           |         | The element inside which the Component must be wrapped. By default `div` is used. But this prop can used to customize it.                                                                                                                         |
 | disableIfShiftIsPressed | Boolean                 |           | `false` | If true and shift is pressed, it will open the native browser context menu and ignore this custom component |
+| triggerOnLeftClick      | Boolean                 |           | `false` | If true, the menu will open with the left click in addition to the right click (or ctrl + click on MacOS) |
 
 ### `<MenuItem />`
 

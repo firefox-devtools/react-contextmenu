@@ -23,7 +23,7 @@ declare module "@firefox-devtools/react-contextmenu" {
         disable?: boolean,
         holdToDisplay?: number,
         renderTag?: React.ElementType,
-        mouseButton?: number,
+        triggerOnLeftClick?: boolean,
         disableIfShiftIsPressed?: boolean,
         [key: string]: any
     }

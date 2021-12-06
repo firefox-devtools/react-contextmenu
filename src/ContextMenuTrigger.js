@@ -17,8 +17,8 @@ export default class ContextMenuTrigger extends Component {
         posX: PropTypes.number,
         posY: PropTypes.number,
         renderTag: PropTypes.elementType,
-        // 0 is left click, 2 is right click
-        mouseButton: PropTypes.number,
+        // Trigger on left click in addition to right click
+        triggerOnLeftClick: PropTypes.bool,
         disableIfShiftIsPressed: PropTypes.bool
     };
 
@@ -30,7 +30,7 @@ export default class ContextMenuTrigger extends Component {
         renderTag: 'div',
         posX: 0,
         posY: 0,
-        mouseButton: null,
+        triggerOnLeftClick: false,
         disableIfShiftIsPressed: false
     };
 
@@ -90,18 +90,13 @@ export default class ContextMenuTrigger extends Component {
     };
 
     handleContextMenu = (event) => {
-        const { mouseButton } = this.props;
-        if (mouseButton === null || event.button === mouseButton) {
-            this.handleContextClick(event);
-        }
+        this.handleContextClick(event);
         callIfExists(this.props.attributes.onContextMenu, event);
     };
 
+    // Note: this function is registered only if triggerOnLeftClick is true.
     handleMouseClick = (event) => {
-        const { mouseButton } = this.props;
-        if (mouseButton === null || event.button === mouseButton) {
-            this.handleContextClick(event);
-        }
+        this.handleContextClick(event);
         callIfExists(this.props.attributes.onClick, event);
     };
 
@@ -151,18 +146,19 @@ export default class ContextMenuTrigger extends Component {
     };
 
     render() {
-        const { renderTag, attributes, children } = this.props;
-        const newAttrs = assign({}, attributes, {
+        const { renderTag, attributes, children, triggerOnLeftClick } = this.props;
+        const newAttrs = {
+            ...attributes,
             className: cx(cssClasses.menuWrapper, attributes.className),
             onContextMenu: this.handleContextMenu,
-            onClick: this.handleMouseClick,
+            onClick: triggerOnLeftClick ? this.handleMouseClick : null,
             onMouseDown: this.handleMouseDown,
             onMouseUp: this.handleMouseUp,
             onTouchStart: this.handleTouchstart,
             onTouchEnd: this.handleTouchEnd,
             onMouseOut: this.handleMouseOut,
             ref: this.elemRef
-        });
+        };
 
         return React.createElement(renderTag, newAttrs, children);
     }
