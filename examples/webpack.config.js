@@ -12,7 +12,7 @@ const config = {
     mode: PROD ? "production" : "development",
     entry: ['./examples/index.js'],
     output: {
-        filename: DEV ? 'bundle.js' : 'bundle.[hash].js',
+        filename: 'bundle.[contenthash].js',
         path: path.resolve(__dirname, '../public'),
         publicPath: DEV ? '/' : '/react-contextmenu/',
         hashDigestLength: 6,

@@ -2,6 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 
 import ContextMenu from '../src/ContextMenu';
+import MenuItem from '../src/MenuItem';
 import { showMenu, hideMenu } from '../src/actions';
 
 describe('ContextMenu tests', () => {
@@ -192,6 +193,134 @@ describe('ContextMenu tests', () => {
             )
         );
         expect(onMouseLeave).toHaveBeenCalled();
+        component.unmount();
+    });
+
+    test('should select the proper menu items with down arrow', () => {
+        const data = { position: { x: 50, y: 50 }, id: 'CORRECT_ID' };
+        const onHide = jest.fn();
+        const component = mount(
+            <ContextMenu id={data.id} onHide={onHide}>
+                <MenuItem onClick={jest.fn()}>Item 1</MenuItem>
+                <MenuItem onClick={jest.fn()}>Item 2</MenuItem>
+            </ContextMenu>
+        );
+        const downArrow = new window.KeyboardEvent('keydown', { keyCode: 40 });
+
+        showMenu(data);
+        // Check that it's visible and there is no selected item at first.
+        expect(component.state()).toEqual(
+            Object.assign(
+                { isVisible: true, forceSubMenuOpen: false, selectedItem: null },
+                data.position
+            )
+        );
+
+        // Select the first item with down arrow.
+        document.dispatchEvent(downArrow);
+        // Index 0 with MenuItem type should be selected.
+        expect(component.state().selectedItem).toEqual({
+            index: 0,
+            type: MenuItem
+        });
+
+        // Select the second item with down arrow.
+        document.dispatchEvent(downArrow);
+        // Index 1 with MenuItem type should be selected.
+        expect(component.state().selectedItem).toEqual({
+            index: 1,
+            type: MenuItem
+        });
+
+        // Select the next item. But since this was the last item, it should loop
+        // back to the first again.
+        document.dispatchEvent(downArrow);
+        // Index 0 with MenuItem type should be selected.
+        expect(component.state().selectedItem).toEqual({
+            index: 0,
+            type: MenuItem
+        });
+
+        component.unmount();
+    });
+
+    test('should select the proper menu items with up arrow', () => {
+        const data = { position: { x: 50, y: 50 }, id: 'CORRECT_ID' };
+        const onHide = jest.fn();
+        const component = mount(
+            <ContextMenu id={data.id} onHide={onHide}>
+                <MenuItem onClick={jest.fn()}>Item 1</MenuItem>
+                <MenuItem onClick={jest.fn()}>Item 2</MenuItem>
+            </ContextMenu>
+        );
+        const upArrow = new window.KeyboardEvent('keydown', { keyCode: 38 });
+
+        showMenu(data);
+        // Check that it's visible and there is no selected item at first.
+        expect(component.state()).toEqual(
+            Object.assign(
+                { isVisible: true, forceSubMenuOpen: false, selectedItem: null },
+                data.position
+            )
+        );
+
+        // Select the previous item. But since there was nothing selected, it
+        // should loop back down to the last item.
+        document.dispatchEvent(upArrow);
+        // Index 1 with MenuItem type should be selected.
+        expect(component.state().selectedItem).toEqual({
+            index: 1,
+            type: MenuItem
+        });
+
+        // Select the first item with up arrow.
+        document.dispatchEvent(upArrow);
+        // Index 0 with MenuItem type should be selected.
+        expect(component.state().selectedItem).toEqual({
+            index: 0,
+            type: MenuItem
+        });
+
+        component.unmount();
+    });
+
+    test('should preserve the selected item after an enter', () => {
+        const data = { position: { x: 50, y: 50 }, id: 'CORRECT_ID' };
+        const onHide = jest.fn();
+        const component = mount(
+            <ContextMenu id={data.id} onHide={onHide}>
+                <MenuItem onClick={jest.fn()} preventClose>Item 1</MenuItem>
+                <MenuItem divider />
+                <MenuItem onClick={jest.fn()} preventClose>Item 2</MenuItem>
+            </ContextMenu>
+        );
+        const upArrow = new window.KeyboardEvent('keydown', { keyCode: 38 });
+        const enter = new window.KeyboardEvent('keydown', { keyCode: 13 });
+
+        showMenu(data);
+        // Check that it's visible and there is no selected item at first.
+        expect(component.state()).toEqual(
+            Object.assign(
+                { isVisible: true, forceSubMenuOpen: false, selectedItem: null },
+                data.position
+            )
+        );
+
+        // Select the second item up arrow.
+        document.dispatchEvent(upArrow);
+        expect(component.state().selectedItem).toEqual({
+            index: 1,
+            type: MenuItem
+        });
+
+        // Press enter to select it.
+        document.dispatchEvent(enter);
+        // The selected item should be preserved and not reset.
+        expect(component.state().selectedItem).toEqual({
+            index: 1,
+            type: MenuItem
+        });
+
         component.unmount();
     });
 });

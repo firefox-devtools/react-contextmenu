@@ -131,20 +131,31 @@ export default class AbstractMenu extends Component {
             return i === currentIndex ? null : i;
         }
 
-        const currentIndex = children.indexOf(selectedItem);
+        const currentIndex = selectedItem ? selectedItem.index : -1;
         const nextEnabledChildIndex = findNextEnabledChildIndex(currentIndex);
 
         if (nextEnabledChildIndex !== null) {
             this.setState({
-                selectedItem: children[nextEnabledChildIndex],
+                selectedItem: {
+                    index: nextEnabledChildIndex,
+                    // We need to know the type of the selected item, so we can
+                    // check it during render and tryToOpenSubMenu.
+                    type: children[nextEnabledChildIndex].type
+                },
                 forceSubMenuOpen: false
             });
         }
     };
 
-    onChildMouseMove = (child) => {
-        if (this.state.selectedItem !== child) {
-            this.setState({ selectedItem: child, forceSubMenuOpen: false });
+    onChildMouseMove = (child, itemIndex) => {
+        if (this.state.selectedItem === null || this.state.selectedItem.index !== itemIndex) {
+            this.setState({
+                selectedItem: {
+                    index: itemIndex,
+                    type: child.type
+                },
+                forceSubMenuOpen: false
+            });
         }
     };
 
@@ -152,29 +163,54 @@ export default class AbstractMenu extends Component {
         this.setState({ selectedItem: null, forceSubMenuOpen: false });
     };
 
-    renderChildren = children => React.Children.map(children, (child) => {
-        const props = {};
-        if (!React.isValidElement(child)) return child;
-        if ([MenuItem, this.getSubMenuType()].indexOf(child.type) < 0) {
-            // Maybe the MenuItem or SubMenu is capsuled in a wrapper div or something else
-            props.children = this.renderChildren(child.props.children);
+    /**
+     * Render all the children.
+     * It has a `childIndexRef` parameter to be able to construct the child
+     * indexes properly. A reference was needed for this function because this
+     * is a recursive function that could mutate the index and pass it back to
+     * the caller. That parameter should always be undefined while calling from
+     * outside.
+     * TODO: Rewrite this function in a way that we don't need this reference.
+     */
+    renderChildren = (children, childIndexRef = { value: -1 }) =>
+        React.Children.map(children, (child) => {
+            let currentChildIndexRef = childIndexRef;
+            const props = {};
+            if (!React.isValidElement(child)) return child;
+
+            if ([MenuItem, this.getSubMenuType()].indexOf(child.type) < 0) {
+                // Maybe the MenuItem or SubMenu is capsuled in a wrapper div or something else
+                props.children = this.renderChildren(child.props.children, currentChildIndexRef);
+                return React.cloneElement(child, props);
+            }
+
+            // At this point we know that this is a menu item and we are going to
+            // render it. We need to increment the child index and assign it as
+            // the item index.
+            let itemIndex = null;
+            if (!child.props.divider) {
+                // A MenuItem can be a divider. Do not increment the value if it's.
+                itemIndex = ++currentChildIndexRef.value;
+            }
+
+            props.onMouseLeave = this.onChildMouseLeave.bind(this);
+            if (child.type === this.getSubMenuType()) {
+                // special props for SubMenu only
+                props.forceOpen = this.state.forceSubMenuOpen &&
+                    (this.state.selectedItem && this.state.selectedItem.index === itemIndex);
+                props.forceClose = this.handleForceClose;
+                props.parentKeyNavigationHandler = this.handleKeyNavigation;
+            }
+            if (!child.props.divider &&
+                (this.state.selectedItem && this.state.selectedItem.index === itemIndex)) {
+                // special props for selected item only
+                props.selected = true;
+                props.ref = (ref) => { this.seletedItemRef = ref; };
+                return React.cloneElement(child, props);
+            }
+
+            // onMouseMove is only needed for non selected items
+            props.onMouseMove = () => this.onChildMouseMove(child, itemIndex);
             return React.cloneElement(child, props);
-        }
-        props.onMouseLeave = this.onChildMouseLeave.bind(this);
-        if (child.type === this.getSubMenuType()) {
-            // special props for SubMenu only
-            props.forceOpen = this.state.forceSubMenuOpen && (this.state.selectedItem === child);
-            props.forceClose = this.handleForceClose;
-            props.parentKeyNavigationHandler = this.handleKeyNavigation;
-        }
-        if (!child.props.divider && this.state.selectedItem === child) {
-            // special props for selected item only
-            props.selected = true;
-            props.ref = (ref) => { this.seletedItemRef = ref; };
-            return React.cloneElement(child, props);
-        }
-        // onMouseMove is only needed for non selected items
-        props.onMouseMove = () => this.onChildMouseMove(child);
-        return React.cloneElement(child, props);
-    });
+        });
 }
