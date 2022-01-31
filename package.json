@@ -55,8 +55,8 @@
     "react-dom": "^0.14.0 || ^15.0.0 || ^16.0.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.16.7",
-    "@babel/core": "^7.16.7",
+    "@babel/cli": "^7.16.8",
+    "@babel/core": "^7.16.12",
     "@babel/eslint-parser": "^7.16.5",
     "@babel/preset-env": "^7.16.8",
     "@babel/preset-react": "^7.16.7",
