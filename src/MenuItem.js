@@ -18,7 +18,8 @@ export default class MenuItem extends Component {
         onMouseLeave: PropTypes.func,
         onMouseMove: PropTypes.func,
         preventClose: PropTypes.bool,
-        selected: PropTypes.bool
+        selected: PropTypes.bool,
+        role: PropTypes.string
     };
 
     static defaultProps = {
@@ -32,7 +33,8 @@ export default class MenuItem extends Component {
         onMouseMove: () => null,
         onMouseLeave: () => null,
         preventClose: false,
-        selected: false
+        selected: false,
+        role: 'menuitem'
     };
 
     handleClick = (event) => {
@@ -61,7 +63,8 @@ export default class MenuItem extends Component {
             className,
             disabled,
             divider,
-            selected
+            selected,
+            role
         } = this.props;
 
         const menuItemClassNames = cx(
@@ -78,7 +81,7 @@ export default class MenuItem extends Component {
         return (
             <div
                 {...attributes} className={menuItemClassNames}
-                role='menuitem' tabIndex='-1' aria-disabled={disabled ? 'true' : 'false'}
+                role={role} tabIndex='-1' aria-disabled={disabled ? 'true' : 'false'}
                 aria-orientation={divider ? 'horizontal' : null}
                 ref={(ref) => { this.ref = ref; }}
                 onMouseMove={this.props.onMouseMove} onMouseLeave={this.props.onMouseLeave}

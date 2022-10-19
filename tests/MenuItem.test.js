@@ -18,4 +18,22 @@ describe('MenuItem tests', () => {
         expect(element).toHaveClass(className);
         expect(element).toHaveClass(attributes.className);
     });
+
+    test('exposes the menuitem role by default', () => {
+        render(
+            <MenuItem>Item</MenuItem>
+        );
+
+        const element = screen.getByRole('menuitem');
+        expect(element).toBeInTheDocument();
+    });
+
+    test('makes it possible to change the default role', () => {
+        render(
+            <MenuItem role='menuitemcheckbox' attributes={{ 'aria-checked': 'true' }}>Item</MenuItem>
+        );
+
+        const element = screen.getByRole('menuitemcheckbox');
+        expect(element).toBeChecked();
+    });
 });
