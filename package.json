@@ -68,7 +68,7 @@
     "babel-loader": "~9.1.2",
     "coveralls": "~3.1.1",
     "cross-env": "~7.0.3",
-    "css-loader": "~6.7.4",
+    "css-loader": "~6.8.1",
     "eslint": "~8.41.0",
     "eslint-config-vkbansal": "~5.2.1",
     "eslint-import-resolver-webpack": "~0.13.2",
