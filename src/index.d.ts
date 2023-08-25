@@ -26,7 +26,8 @@ declare module "@firefox-devtools/react-contextmenu" {
         renderTag?: React.ElementType,
         triggerOnLeftClick?: boolean,
         disableIfShiftIsPressed?: boolean,
-        [key: string]: any
+        [key: string]: any,
+        children?: React.ReactNode,
     }
 
     export interface MenuItemProps {
