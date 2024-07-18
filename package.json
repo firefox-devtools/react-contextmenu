@@ -87,7 +87,7 @@
     "react-router-dom": "~6.24.0",
     "rimraf": "~5.0.8",
     "style-loader": "~4.0.0",
-    "webpack": "5.92.1",
+    "webpack": "5.93.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.4"
   },
