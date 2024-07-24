@@ -54,10 +54,10 @@
     "react-dom": "^0.14.0 || ^15.0.0 || ^16.0.1 || ^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.24.7",
-    "@babel/core": "^7.24.7",
-    "@babel/eslint-parser": "^7.24.7",
-    "@babel/preset-env": "^7.24.7",
+    "@babel/cli": "^7.24.8",
+    "@babel/core": "^7.24.9",
+    "@babel/eslint-parser": "^7.24.8",
+    "@babel/preset-env": "^7.24.8",
     "@babel/preset-react": "^7.24.7",
     "@babel/preset-stage-2": "^7.8.3",
     "@testing-library/dom": "^10.2.0",
