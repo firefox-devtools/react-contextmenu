@@ -80,7 +80,11 @@ function App() {
 
 const root = ReactDOMClient.createRoot(document.getElementById('main'));
 root.render(
-    <Router>
+    <Router
+        future={{
+            v7_relativeSplatPath: true,
+            v7_startTransition: true
+        }}>
         <App />
     </Router>
 );
