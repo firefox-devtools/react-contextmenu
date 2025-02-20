@@ -68,6 +68,7 @@ export default class SubMenu extends AbstractMenu {
         if (this.props.forceOpen || this.state.visible) {
             const wrapper = window.requestAnimationFrame || setTimeout;
             wrapper(() => {
+                if (!this.subMenu) return;
                 const styles = this.props.rtl
                     ? this.getRTLMenuPosition()
                     : this.getMenuPosition();
