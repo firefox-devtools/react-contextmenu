@@ -42,4 +42,19 @@ describe('<SubMenu/>', () => {
         await user.hover(wrapper);
         await expect(() => waitForMenuVisible(submenu)).rejects.toThrow();
     });
+
+    it('should not crash after immediate unmount', async () => {
+        let callback = null;
+        jest.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => {
+            callback = cb;
+            return 1;
+        });
+        const { unmount } = render(<SubMenu title='Title' hoverDelay={0} />);
+        const user = userEvent.setup();
+        const wrapper = screen.getByText('Title');
+        await user.hover(wrapper);
+        unmount();
+
+        expect(callback).not.toThrow();
+    });
 });

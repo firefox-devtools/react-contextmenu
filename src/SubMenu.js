@@ -68,6 +68,7 @@ export default class SubMenu extends AbstractMenu {
         if (this.props.forceOpen || this.state.visible) {
             const wrapper = window.requestAnimationFrame || setTimeout;
             wrapper(() => {
+                if (!this.subMenu) return;
                 const styles = this.props.rtl
                     ? this.getRTLMenuPosition()
                     : this.getMenuPosition();
@@ -88,6 +89,7 @@ export default class SubMenu extends AbstractMenu {
             });
         } else {
             const cleanup = () => {
+                if (!this.subMenu) return;
                 this.subMenu.removeEventListener('transitionend', cleanup);
                 this.subMenu.style.removeProperty('bottom');
                 this.subMenu.style.removeProperty('right');
