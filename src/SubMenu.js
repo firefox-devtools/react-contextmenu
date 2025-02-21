@@ -89,6 +89,7 @@ export default class SubMenu extends AbstractMenu {
             });
         } else {
             const cleanup = () => {
+                if (!this.subMenu) return;
                 this.subMenu.removeEventListener('transitionend', cleanup);
                 this.subMenu.style.removeProperty('bottom');
                 this.subMenu.style.removeProperty('right');
