@@ -79,7 +79,7 @@ export default class ContextMenu extends AbstractMenu {
                     : this.getMenuPosition(x, y);
 
                 wrapper(() => {
-                    if (!this.menu) return;
+                    if (!this.menu || !this.state.isVisible) return;
                     this.menu.style.top = `${top}px`;
                     this.menu.style.left = `${left}px`;
                     this.menu.style.opacity = 1;
