@@ -210,4 +210,56 @@ describe('ContextMenu tests', () => {
         // The selected item should be preserved and not reset.
         expect(screen.getByText('Item 2')).toHaveClass('react-contextmenu-item--selected');
     });
+
+    test('should select proper menu item, even though it is wrapped with html element', async () => {
+        const data = { position: { x: 50, y: 50 }, id: 'CORRECT_ID' };
+        render(
+            <ContextMenu id={data.id} onHide={jest.fn()}>
+                <div><MenuItem onClick={jest.fn()}>Item 1</MenuItem></div>
+                <span><MenuItem onClick={jest.fn()}>Item 2</MenuItem></span>
+            </ContextMenu>
+        );
+        const user = userEvent.setup();
+
+        await showMenu(data);
+        // Check that it's visible and there is no selected item at first.
+        expect(visibleContextMenuElement()).toBeInTheDocument();
+        expect(selectedItemElement()).not.toBeInTheDocument();
+
+        // Select the first item with down arrow.
+        await user.keyboard('{ArrowDown}');
+        expect(screen.getByText('Item 1')).toHaveClass('react-contextmenu-item--selected');
+
+        // Select the second item with down arrow.
+        await user.keyboard('{ArrowDown}');
+        // Index 1 with MenuItem type should be selected.
+        expect(screen.getByText('Item 2')).toHaveClass('react-contextmenu-item--selected');
+
+        // Select the next item. But since this was the last item, it should loop
+        // back to the first again.
+        await user.keyboard('{ArrowDown}');
+        // Index 0 with MenuItem type should be selected.
+        expect(screen.getByText('Item 1')).toHaveClass('react-contextmenu-item--selected');
+    });
+
+    test('should allow keyboard actions when menu contains a non menu item element', async () => {
+        const data = { position: { x: 50, y: 50 }, id: 'CORRECT_ID' };
+        render(
+            <ContextMenu id={data.id} onHide={jest.fn()}>
+                <MenuItem onClick={jest.fn()}>Item 1</MenuItem>
+                <MenuItem onClick={jest.fn()}>Item 2</MenuItem>
+                <div>custom-content</div>
+            </ContextMenu>
+        );
+        const user = userEvent.setup();
+
+        await showMenu(data);
+        // Check that it's visible and there is no selected item at first.
+        expect(visibleContextMenuElement()).toBeInTheDocument();
+        expect(selectedItemElement()).not.toBeInTheDocument();
+
+        // Select the first item with down arrow and don't throw any errors
+        await user.keyboard('{ArrowDown}');
+        expect(screen.getByText('Item 1')).toHaveClass('react-contextmenu-item--selected');
+    });
 });
