@@ -32,7 +32,7 @@
     "build:examples": "yarn clean:examples && yarn build:dev",
     "build:dev": "cross-env BABEL_ENV=es6 webpack --config examples/webpack.config.js --progress --profile",
     "start": "webpack serve --config examples/webpack.config.js",
-    "prepublishOnly": "yarn build"
+    "prepack": "yarn --frozen-lockfile && yarn build"
   },
   "author": "Vivek Kumar Bansal <contact@vkbansal.me>",
   "license": "MIT",
