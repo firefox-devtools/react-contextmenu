@@ -23,6 +23,8 @@ declare module "@firefox-devtools/react-contextmenu" {
         collect?: {(data: any): any},
         disable?: boolean,
         holdToDisplay?: number,
+        posX?: number,
+        posY?: number,
         renderTag?: React.ElementType,
         triggerOnLeftClick?: boolean,
         disableIfShiftIsPressed?: boolean,
@@ -38,17 +40,29 @@ declare module "@firefox-devtools/react-contextmenu" {
         divider?: boolean,
         preventClose?: boolean,
         onClick?: {(event: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>, data: Object, target: HTMLElement): void} | Function,
+        onMouseLeave?: {(event: React.MouseEvent<HTMLDivElement>): void} | Function,
+        onMouseMove?: {(event: React.MouseEvent<HTMLDivElement>): void} | Function,
+        role?: string,
+        selected?: boolean,
         children?: React.ReactNode,
     }
 
     export interface SubMenuProps {
         title: React.ReactElement<any> | React.ReactText,
+        attributes?: React.HTMLAttributes<HTMLDivElement>,
         className?: string,
         disabled?: boolean,
         hoverDelay?: number,
         rtl?: boolean,
+        selected?: boolean,
+        onMouseMove?: {(event: React.MouseEvent<HTMLDivElement>): void} | Function,
+        onMouseOut?: {(event: React.MouseEvent<HTMLDivElement>): void} | Function,
+        forceOpen?: boolean,
+        forceClose?: {(): void} | Function,
+        parentKeyNavigationHandler?: {(event: React.KeyboardEvent): void} | Function,
         preventCloseOnClick?: boolean,
         onClick?: {(event: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>, data: Object, target: HTMLElement): void} | Function,
+        data?: Object,
         children?: React.ReactNode,
     }
 

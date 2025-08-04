@@ -22,7 +22,10 @@ export default class SubMenu extends AbstractMenu {
         onMouseOut: PropTypes.func,
         forceOpen: PropTypes.bool,
         forceClose: PropTypes.func,
-        parentKeyNavigationHandler: PropTypes.func
+        parentKeyNavigationHandler: PropTypes.func,
+        onClick: PropTypes.func,
+        data: PropTypes.object,
+        preventCloseOnClick: PropTypes.bool
     };
 
     static defaultProps = {
@@ -36,7 +39,10 @@ export default class SubMenu extends AbstractMenu {
         onMouseOut: () => null,
         forceOpen: false,
         forceClose: () => null,
-        parentKeyNavigationHandler: () => null
+        parentKeyNavigationHandler: () => null,
+        onClick: () => null,
+        data: {},
+        preventCloseOnClick: false
     };
 
     constructor(props) {
