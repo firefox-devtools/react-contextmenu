@@ -49,12 +49,20 @@ declare module "@firefox-devtools/react-contextmenu" {
 
     export interface SubMenuProps {
         title: React.ReactElement<any> | React.ReactText,
+        attributes?: React.HTMLAttributes<HTMLDivElement>,
         className?: string,
         disabled?: boolean,
         hoverDelay?: number,
         rtl?: boolean,
+        selected?: boolean,
+        onMouseMove?: {(event: React.MouseEvent<HTMLDivElement>): void} | Function,
+        onMouseOut?: {(event: React.MouseEvent<HTMLDivElement>): void} | Function,
+        forceOpen?: boolean,
+        forceClose?: {(): void} | Function,
+        parentKeyNavigationHandler?: {(event: React.KeyboardEvent): void} | Function,
         preventCloseOnClick?: boolean,
         onClick?: {(event: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>, data: Object, target: HTMLElement): void} | Function,
+        data?: Object,
         children?: React.ReactNode,
     }
 
