@@ -38,6 +38,10 @@ declare module "@firefox-devtools/react-contextmenu" {
         divider?: boolean,
         preventClose?: boolean,
         onClick?: {(event: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>, data: Object, target: HTMLElement): void} | Function,
+        onMouseLeave?: {(event: React.MouseEvent<HTMLDivElement>): void} | Function,
+        onMouseMove?: {(event: React.MouseEvent<HTMLDivElement>): void} | Function,
+        role?: string,
+        selected?: boolean,
         children?: React.ReactNode,
     }
 
