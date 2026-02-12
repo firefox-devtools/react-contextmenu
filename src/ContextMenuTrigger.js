@@ -126,7 +126,9 @@ export default class ContextMenuTrigger extends Component {
             id: this.props.id
         };
         if (data && (typeof data.then === 'function')) {
-            // it's promise
+            // it's promise, the event needs to be persisted, so that React
+            // doesn't reuse the event object while the data function resolves
+            event.persist();
             data.then((resp) => {
                 showMenuConfig.data = assign({}, resp, {
                     target: event.target
