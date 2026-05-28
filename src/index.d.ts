@@ -48,7 +48,7 @@ declare module "@firefox-devtools/react-contextmenu" {
     }
 
     export interface SubMenuProps {
-        title: React.ReactElement<any> | React.ReactText,
+        title: React.ReactElement<any> | string | number,
         attributes?: React.HTMLAttributes<HTMLDivElement>,
         className?: string,
         disabled?: boolean,
