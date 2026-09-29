@@ -4,6 +4,7 @@ import jest from 'eslint-plugin-jest';
 import jestDom from 'eslint-plugin-jest-dom';
 import testingLibrary from 'eslint-plugin-testing-library';
 import { FlatCompat } from '@eslint/eslintrc';
+import { fixupConfigRules } from '@eslint/compat';
 
 // Useful function tool to more easily merge external shared configuration for a
 // specific files filter.
@@ -15,7 +16,7 @@ function configsForFiles({ files, configs }) {
 const compat = new FlatCompat();
 
 export default [
-    ...compat.extends('vkbansal', 'vkbansal/react'),
+    ...fixupConfigRules(compat.extends('vkbansal', 'vkbansal/react')),
     {
         languageOptions: {
             parser: babelParser,
