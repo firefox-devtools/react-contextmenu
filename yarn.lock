@@ -83,19 +83,19 @@
     json5 "^2.2.3"
     semver "^6.3.1"
 
-"@babel/core@^8.0.5":
-  version "8.0.5"
-  resolved "https://registry.yarnpkg.com/@babel/core/-/core-8.0.5.tgz#9e851e056f8ee5f60dbb7963312c29faee880259"
-  integrity sha512-2/oWkgTbBYoqioCWAE4XJobOrzwxTDa5/XjDP3tJ1BhDr/owcd9qnXBp4xc3/2G5X4bvXM04nrxbRJxFcXAxFQ==
+"@babel/core@^8.0.6":
+  version "8.0.6"
+  resolved "https://registry.yarnpkg.com/@babel/core/-/core-8.0.6.tgz#9f868b67f2e8ef63795b9da6866b0e14a9f2b11c"
+  integrity sha512-5zwYt1V4ji3mXKKRIAkohSJ29WepxNwxQi+7y7P5AcVPh1dcxnZBU2cfxHnPwS+u9+lZnXPsv30TQaF2xg+Tfg==
   dependencies:
-    "@babel/code-frame" "^8.0.0"
-    "@babel/generator" "^8.0.5"
-    "@babel/helper-compilation-targets" "^8.0.5"
+    "@babel/code-frame" "^8.0.6"
+    "@babel/generator" "^8.0.6"
+    "@babel/helper-compilation-targets" "^8.0.6"
     "@babel/helpers" "^8.0.5"
-    "@babel/parser" "^8.0.5"
+    "@babel/parser" "^8.0.6"
     "@babel/template" "^8.0.0"
-    "@babel/traverse" "^8.0.5"
-    "@babel/types" "^8.0.5"
+    "@babel/traverse" "^8.0.6"
+    "@babel/types" "^8.0.6"
     "@types/gensync" "^1.0.5"
     convert-source-map "^2.0.0"
     empathic "^2.0.1"
@@ -125,7 +125,7 @@
     "@jridgewell/trace-mapping" "^0.3.28"
     jsesc "^3.0.2"
 
-"@babel/generator@^8.0.5", "@babel/generator@^8.0.6":
+"@babel/generator@^8.0.6":
   version "8.0.6"
   resolved "https://registry.yarnpkg.com/@babel/generator/-/generator-8.0.6.tgz#a2027d70276bd721aa5b85fc2424852976d5d474"
   integrity sha512-/pcanjdRsonCexCuxgGD8fKnBLLzk2i9uM4kmcmGyyev2R5YDs+rafMYZ89RvaGY1mW8T7C5au0TyYaEeHBGng==
@@ -155,7 +155,7 @@
     lru-cache "^5.1.1"
     semver "^6.3.1"
 
-"@babel/helper-compilation-targets@^8.0.0", "@babel/helper-compilation-targets@^8.0.5":
+"@babel/helper-compilation-targets@^8.0.0", "@babel/helper-compilation-targets@^8.0.5", "@babel/helper-compilation-targets@^8.0.6":
   version "8.0.6"
   resolved "https://registry.yarnpkg.com/@babel/helper-compilation-targets/-/helper-compilation-targets-8.0.6.tgz#ade47f2107c2ce83f0e2afad92795c23642f7343"
   integrity sha512-HTrtZ4+iA0+kzdbCgvdSk1U4pEl3BvpGnlUbualCGNbrVhhQvhgBzurTUmqpWyvyHbWYWaIfdx2mOlL9LJjsew==
@@ -354,7 +354,7 @@
   dependencies:
     "@babel/types" "^7.29.7"
 
-"@babel/parser@^8.0.0", "@babel/parser@^8.0.5", "@babel/parser@^8.0.6":
+"@babel/parser@^8.0.0", "@babel/parser@^8.0.6":
   version "8.0.6"
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-8.0.6.tgz#5de0b4f9899dae7497f1aea6a6c81bd0863f04df"
   integrity sha512-LpGDIYJAzc3Y3PT9x+FxBrGYu2PlWxLmyN7SwPTzaX0LSwEmFJBsRnPBqmaXF2r1v+Zhz6lNiEJ+7yKtM5+Ugg==
@@ -6264,17 +6264,17 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-router-dom@~7.18.3:
-  version "7.18.3"
-  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-7.18.3.tgz#0688c91b4b376c8b0dcaf0a0064975d52a32e0f7"
-  integrity sha512-ytVbyBBM7vMfRCam25r0WMhSVSom909A8p+8m0/f1w853dz/xfFu6etAT2SEbVoSnI+ZoPRDqIsQXVT89gp7kg==
+react-router-dom@~7.18.4:
+  version "7.18.4"
+  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-7.18.4.tgz#07b72b8aab2d80af847425107f966f1688c703d0"
+  integrity sha512-yrfmJHIpDG7taCpqKjT1G5B6q3O2K+RN8/fgNf0lTjCwiPbQ0ei6vXX9ZjQR+7ld8Tr7Z5xmyMnZ8YJrphWQUw==
   dependencies:
-    react-router "7.18.3"
+    react-router "7.18.4"
 
-react-router@7.18.3:
-  version "7.18.3"
-  resolved "https://registry.yarnpkg.com/react-router/-/react-router-7.18.3.tgz#2a3257aa7c5edd5a71f878063e4c7f3fcfc4b76a"
-  integrity sha512-gyXgtdr5uACJ5b1Q4udzjVV+tb/rlHIMJKuJ0e89R4Kzgz47z/rgP0dIKxktqIEUhDHluGTPJJH/wRha7CyqsA==
+react-router@7.18.4:
+  version "7.18.4"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-7.18.4.tgz#dc30cbb27e936f06d9e1d75ab648b317deb698a4"
+  integrity sha512-PUPQcMhMGRAslLcvtlPz/kmzBEWPhLdgLFrL7pLNepBL6dX0lWj4WD2cUYVgYCuT3jxvghYFg81cDTj44DhetQ==
   dependencies:
     cookie "^1.0.1"
     set-cookie-parser "^2.6.0"
