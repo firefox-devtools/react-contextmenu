@@ -105,10 +105,10 @@
     obug "^3.0.0"
     verkit "^0.5.0"
 
-"@babel/eslint-parser@^8.0.7":
-  version "8.0.7"
-  resolved "https://registry.yarnpkg.com/@babel/eslint-parser/-/eslint-parser-8.0.7.tgz#ae5b9f9bf09dae608fd6e696a6a7018c4a74650d"
-  integrity sha512-ik5I+U64QuQQPohw0A1wVWPR+vTRYVfWBDLOLc1KwZQ2SKayQLD52DgoB3W/kmwc4MP1E37qh7nZuDD9xsKYcA==
+"@babel/eslint-parser@^8.1.2":
+  version "8.1.2"
+  resolved "https://registry.yarnpkg.com/@babel/eslint-parser/-/eslint-parser-8.1.2.tgz#d4ceb3b89c8d3d3636682777719820155794cd9c"
+  integrity sha512-oyB1a5JmJz/Hrw7Qy6c47uAemiD3irqyVyPwGsdzdw7XpdCtKCkmEJqtHnqRSrxiptVJoccrAxU+iDMs9zgeIg==
   dependencies:
     eslint-scope "^9.1.0"
     eslint-visitor-keys "^5.0.0"
@@ -2096,10 +2096,10 @@
   dependencies:
     "@babel/runtime" "^7.12.5"
 
-"@testing-library/user-event@^14.6.8":
-  version "14.6.8"
-  resolved "https://registry.yarnpkg.com/@testing-library/user-event/-/user-event-14.6.8.tgz#9433b5008d8aff4cdf60c177f5789ce32062b763"
-  integrity sha512-vgSSqnANMnkcYR/vUNDbwS7aM3OErRLNUG8vCVVlj4oc6cKffUrccX7UAS5AmJQQNZTSibi9z5GvvRZ0aYgUCQ==
+"@testing-library/user-event@^14.6.13":
+  version "14.6.13"
+  resolved "https://registry.yarnpkg.com/@testing-library/user-event/-/user-event-14.6.13.tgz#00a33d2a57730090336f0d7cbd11aa72968c2a5a"
+  integrity sha512-2LVZGptuB5un1Cu/u31o9adkCwbsUTMp4B4p04xupI7uobvTIpgKidSdShqZiReo/mQmvR9xjgdgTgge4oAbYA==
 
 "@tybys/wasm-util@^0.10.3":
   version "0.10.4"
@@ -3895,17 +3895,17 @@ eslint-plugin-import@~2.32.0:
     string.prototype.trimend "^1.0.9"
     tsconfig-paths "^3.15.0"
 
-eslint-plugin-jest-dom@^5.10.1:
-  version "5.10.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jest-dom/-/eslint-plugin-jest-dom-5.10.1.tgz#4d37e9ef9ebdbb5b53add4e9db1f76e9c32963da"
-  integrity sha512-IIJdzbACbhJUJyMAqpA9E9gxp1Gv29TeQ3DtL+pepwP8Oq2WiqjOB2HbnEIs23h0ewdKIZRDI56yLro2eUO+DA==
+eslint-plugin-jest-dom@^5.10.2:
+  version "5.10.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jest-dom/-/eslint-plugin-jest-dom-5.10.2.tgz#22c18bc31c6f5090063056787c6cfcee8251231d"
+  integrity sha512-Ij9pCRrBNPEUKqg0oMUv8aMjGzPKdpayOarDW3zWmYdtQ2dt7lZ7myppA2KwJMUJhhHAtSWY5Pgg7iMjC6w6JA==
   dependencies:
     requireindex "^1.2.0"
 
-eslint-plugin-jest@^29.17.0:
-  version "29.17.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-29.17.0.tgz#513444e5f0b2ed559116f0be02a41e6e22e84f39"
-  integrity sha512-6jtpU6MhYKbagkES02TupWAUUooJpZtKg94Ax0b8HhUorv3InSTBU8RRtlSBe0LocOcShXOpyec3PHzPDkJCSg==
+eslint-plugin-jest@^29.17.1:
+  version "29.17.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-29.17.1.tgz#42f8430f2cf8b03b3b7dfaed8a7657bbe457ed53"
+  integrity sha512-Ec5MnIgjAGAHwXQ0sMeEqXGzEe1jtBe6r52Iw7AquulmI92ldRWQNITBFvnCwPxz6s+89zTViQr49gSH/aGiXA==
   dependencies:
     "@typescript-eslint/utils" "^8.0.0"
 
